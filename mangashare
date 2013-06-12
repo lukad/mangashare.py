@@ -7,7 +7,7 @@ import os
 import sys
 import difflib
 
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 BASE_URL = 'http://read.mangashare.com/'
 DIR_REGEX = r'datarow-1">([\w_./!$\- ]+).+?datarow-0"><a href="(/[\w_\-]+)'
 CHAPTERS_REGEX = r'row-1">([\w!.$-_ ]+)</td.+?row-0"><a href="([\w.\-_:/]+)"'
@@ -94,7 +94,7 @@ def download_page(name, page_url, chapter, page, folder):
             os.makedirs(folder)
         except os.error:
             print("Error: could not create the directory '%s'" % folder)
-    urllib.request.urlretrieve(image_url, os.path.join(folder, "%s-Chapter%d-Page%d" % (name, chapter, page)))
+    urllib.request.urlretrieve(image_url, os.path.join(folder, "%s-Chapter%03d-Page%02d" % (name, chapter, page)))
 
 def download_manga(manga, folder):
     chapters = get_chapter_list(manga)
