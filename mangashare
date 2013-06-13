@@ -40,7 +40,7 @@ def find_manga(name):
     mangas = get_index()
     finds = []
     for e in mangas:
-        s = difflib.SequenceMatcher(None, name, e[0])
+        s = difflib.SequenceMatcher(None, name.lower(), e[0].lower())
         ratio = s.quick_ratio()
         if ratio >= 0.75:
             finds.append((ratio, e))
